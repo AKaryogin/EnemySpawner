@@ -6,14 +6,14 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private Enemy _template;
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private int _countEnemy;
+    [SerializeField] private int _count;
 
     private void Start()
     {
-        StartCoroutine(SetSpawn(_countEnemy));
+        StartCoroutine(SetSpawn(_count));
     }
 
-    public void Spawn(Vector3 position)
+    private void Spawn(Vector3 position)
     {
         Instantiate(_template, position, Quaternion.identity);
     }
@@ -21,13 +21,16 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SetSpawn(int countEnemy)
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(2f);
+        int indexPoint = 0;
 
-        for(int i = 0, k = 0; i < countEnemy; i++, k++)
+        for(int i = 0; i < countEnemy; i++)
         {
-            if(k >= _spawnPoints.Length)
-                k = 0;
+            if(indexPoint >= _spawnPoints.Length)
+                indexPoint = 0;
 
-            Spawn(_spawnPoints[k].position);
+            Spawn(_spawnPoints[indexPoint].position);
+
+            indexPoint++;
             
             yield return waitForSeconds;
         }
