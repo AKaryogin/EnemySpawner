@@ -259,7 +259,7 @@ MonoBehaviour:
   - {fileID: 1955646848}
   - {fileID: 1087736811}
   - {fileID: 1291815002}
-  _countEnemy: 10
+  _count: 10
 --- !u!114 &229222383
 MonoBehaviour:
   m_ObjectHideFlags: 0

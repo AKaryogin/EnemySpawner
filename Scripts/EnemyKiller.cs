@@ -8,8 +8,8 @@ public class EnemyKiller : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(difference, Vector3.forward);
+            Vector3 mousePositionToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePositionToWorld, Vector3.forward);
 
             if(hit.collider != null)
             {
